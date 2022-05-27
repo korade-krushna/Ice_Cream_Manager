@@ -16,8 +16,20 @@ public class Employee {
     private String password;
     private String roll;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "employee")
     private List<IceCream> flavours = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", roll='" + roll + '\'' +
+                ", flavours=" + flavours +
+                '}';
+    }
 
     public List<IceCream> getFlavours() {
         return flavours;
