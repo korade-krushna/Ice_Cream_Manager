@@ -14,7 +14,16 @@ public class Employee {
     @Column(unique = true)
     private String email;
     private String password;
+    private boolean enabled;
     private String roll;
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "employee")
     private List<IceCream> flavours = new ArrayList<>();
