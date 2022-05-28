@@ -3,6 +3,6 @@ package com.icecream.dao;
 import com.icecream.models.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepositary extends JpaRepository<Employee, Integer> {
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
 }
