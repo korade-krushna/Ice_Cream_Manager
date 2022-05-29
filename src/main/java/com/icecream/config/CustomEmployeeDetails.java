@@ -11,12 +11,10 @@ import java.util.List;
 
 public class CustomEmployeeDetails implements UserDetails {
 
-    Employee employee;
-
+    private final Employee employee;
     public CustomEmployeeDetails(Employee employee) {
         this.employee = employee;
     }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(employee.getRoll());

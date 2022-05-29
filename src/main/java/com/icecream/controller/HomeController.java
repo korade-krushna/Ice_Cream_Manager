@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -39,7 +36,7 @@ public class HomeController {
     public String do_register(@ModelAttribute("employee") Employee employee,
                               Model model, HttpSession session) throws Exception {
         try {
-            employee.setRoll("EMPLOYEE");
+            employee.setRoll("ROLE_EMPLOYEE");
             employee.setEnabled(true);
             employee.setPassword(passwordEncoder.encode(employee.getPassword()));
             this.employeeRepository.save(employee);
@@ -54,5 +51,9 @@ public class HomeController {
                     "alert-danger"));
             return "become-employee";
         }
+    }
+    @GetMapping("/sign-in")
+    public String customLogin(Model model) {
+        return "login";
     }
 }

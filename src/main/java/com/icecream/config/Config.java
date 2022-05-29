@@ -22,7 +22,8 @@ public class Config extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    public DaoAuthenticationProvider daoAuthenticationProvider (){
+    @Bean
+    public DaoAuthenticationProvider daoAuthenticationProvider(){
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setUserDetailsService(this.getEmployeeDetailsService());
         daoAuthenticationProvider.setPasswordEncoder(this.bCryptPasswordEncoder());
@@ -40,7 +41,7 @@ public class Config extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().
                 antMatchers("/employee/**").hasRole("EMPLOYEE")
                 .antMatchers("/**").permitAll()
-                .and().formLogin()
+                .and().formLogin().loginPage("/sign-in")
                 .and().csrf().disable();
     }
 }

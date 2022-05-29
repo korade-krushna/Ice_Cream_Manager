@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" th:replace="base::Layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title >Ice Cream Shop</title>
+</head>
+<body class="bg-dark">
+
+<section >
+    <form th:action="@{/sign-in}" action="#" method="post" class="form">
+    <section class="vh-100 bg-light">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5 ">
+                    <div class="card shadow-2-strong bg-gradient-light" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+                            <h3 class="mb-5">Sign in</h3>
+                            <div th:if="${param.error}" class="alert alert-danger">
+                                Invalid Credentials
+                            </div>
+                            <div th:if="${param.logout}" class="alert alert-success">
+                                Logged Out
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input name="username" type="email" id="username" class="form-control form-control-lg" placeholder="Username"/>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input name="password" type="password" id="password" class="form-control form-control-lg" placeholder="Password"/>
+                            </div>
+                            <button class="btn btn-primary btn-lg btn-block" type="submit" name="submit" value="submit">Login</button>
+                            <div class="text-center mt-3">
+                                <p>Not a member? <a th:href="@{/become-employee}">Register</a></p>
+                            </div>
+                            <hr class="my-4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </form>
+</section>
+</body>
+</html>
+
+
+
+
+
+
+
+

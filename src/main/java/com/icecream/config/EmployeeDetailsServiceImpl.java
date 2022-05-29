@@ -13,7 +13,7 @@ public class EmployeeDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Employee employee = employeeRepository.getEmployeebyUsername(username);
+        Employee employee = this.employeeRepository.getEmployeebyUsername(username);
         if (employee == null) {
             throw new UsernameNotFoundException("employee dose not exist");
         }

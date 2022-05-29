@@ -15,7 +15,7 @@ public class Employee {
     private String email;
     private String password;
     private boolean enabled;
-    private String roll;
+    private String role;
 
     public boolean isEnabled() {
         return enabled;
@@ -35,7 +35,7 @@ public class Employee {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", roll='" + roll + '\'' +
+                ", roll='" + role + '\'' +
                 ", flavours=" + flavours +
                 '}';
     }
@@ -85,10 +85,10 @@ public class Employee {
     }
 
     public String getRoll() {
-        return roll;
+        return role;
     }
 
-    public void setRoll(String roll) {
-        this.roll = roll;
+    public void setRoll(String role) {
+        this.role = role;
     }
 }
