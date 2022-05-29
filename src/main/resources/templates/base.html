@@ -11,9 +11,9 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <title >Ice Cream</title>
 </head>
-<body class="bg-light">
+<body >
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Ice Cream Shop</a>
+    <a class="navbar-brand" th:href="@{/}">Ice Cream Shop</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -34,6 +34,7 @@
         </ul>
     </div>
 </nav>
+
     <div th:replace="${content}"></div>
 </body>
 </html>
