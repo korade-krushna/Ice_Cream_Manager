@@ -42,6 +42,7 @@ public class Config extends WebSecurityConfigurerAdapter {
                 antMatchers("/employee/**").hasRole("EMPLOYEE")
                 .antMatchers("/**").permitAll()
                 .and().formLogin().loginPage("/sign-in")
+                .defaultSuccessUrl("/employee/dashboard")
                 .and().csrf().disable();
     }
 }
