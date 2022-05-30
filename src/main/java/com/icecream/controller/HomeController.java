@@ -4,6 +4,7 @@ import com.icecream.dao.EmployeeRepository;
 import com.icecream.dao.IceCreamRepositary;
 import com.icecream.helper.Message;
 import com.icecream.models.Employee;
+import com.icecream.models.IceCream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 
 @Controller
@@ -55,6 +57,12 @@ public class HomeController {
     @GetMapping("/sign-in")
     public String customLogin(Model model) {
         return "login";
+    }
+    @RequestMapping("/availables")
+    public String dashboard(Model model){
+        List<IceCream> icecreams = this.iceCreamRepositary.findAll();
+        model.addAttribute("icecreams", icecreams);
+        return "available_icecream";
     }
 
 }
