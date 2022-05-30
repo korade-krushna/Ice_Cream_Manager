@@ -14,11 +14,24 @@ public class IceCream {
     private String variant;
     private int quantity;
     private String image;
-    @Column(length = 40)
+    @Column(length = 120)
     private String description;
 
     @ManyToOne
     private Employee employee;
+
+    @Override
+    public String toString() {
+        return "IceCream{" +
+                "Iid=" + Iid +
+                ", name='" + name + '\'' +
+                ", variant='" + variant + '\'' +
+                ", quantity=" + quantity +
+                ", image='" + image + '\'' +
+                ", description='" + description + '\'' +
+                ", employee=" + employee +
+                '}';
+    }
 
     public Employee getEmployee() {
         return employee;
