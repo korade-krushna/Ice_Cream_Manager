@@ -2,6 +2,7 @@ package com.icecream.models;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Icecream")
@@ -14,7 +15,8 @@ public class IceCream {
     private String variant;
     private int quantity;
     private String image;
-    @Column(length = 120)
+    @Column(length = 65500)
+    @Size(min = 10, max = 65500)
     private String description;
 
     @ManyToOne

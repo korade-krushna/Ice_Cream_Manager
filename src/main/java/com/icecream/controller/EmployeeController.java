@@ -1,6 +1,7 @@
 package com.icecream.controller;
 
 import com.icecream.dao.EmployeeRepository;
+import com.icecream.dao.IceCreamRepositary;
 import com.icecream.helper.Message;
 import com.icecream.models.Employee;
 import com.icecream.models.IceCream;
@@ -17,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
+import java.util.List;
 
 
 @Controller
@@ -24,6 +26,8 @@ import java.security.Principal;
 public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepository;
+    @Autowired
+    private IceCreamRepositary iceCreamRepositary;
 
     @ModelAttribute
     public void addData(Model model, Principal principal){
@@ -32,7 +36,10 @@ public class EmployeeController {
         model.addAttribute("employee", employee);
     }
     @RequestMapping("/dashboard")
-    public String dashboard(){
+    public String dashboard(Model model){
+        List<IceCream> icecreams = this.iceCreamRepositary.findAll();
+        System.out.println(icecreams);
+        model.addAttribute("icecreams", icecreams);
         return "Employee/employee-dashboard";
     }
     @RequestMapping("/add-cream")
@@ -44,7 +51,6 @@ public class EmployeeController {
     public String do_add(@ModelAttribute IceCream icecream,
                          Model model, @RequestParam("i-image")MultipartFile file, HttpSession session){
         try {
-            System.out.println(file);
             if(!file.isEmpty()){
                 icecream.setImage(file.getOriginalFilename());
                 File saved_file = new ClassPathResource("static/img").getFile();
@@ -53,12 +59,13 @@ public class EmployeeController {
                         + File.separator +
                         file.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
                 session.setAttribute("message", new Message("Ice Cream Added Succesfully", "alert-success"));
+                this.iceCreamRepositary.save(icecream);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            session.setAttribute("message", new Message("Sommething went wrong", "alert-danger"));
+            model.addAttribute("icecream", icecream);
+            session.setAttribute("message", new Message(e.getMessage(), "alert-danger"));
         }
-        System.out.println(icecream);
         return "Employee/add_ice_cream";
     }
 }
