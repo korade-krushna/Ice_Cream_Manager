@@ -26,7 +26,7 @@ public class HomeController {
     private BCryptPasswordEncoder passwordEncoder;
     @RequestMapping("/")
     public String home(Model model) {
-        return "/AnyBody/index";
+        return "/index";
     }
     @RequestMapping("/become-employee") //Controller For Registering the Employee
     public String addEmployee(Model model) {
