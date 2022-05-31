@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
+// class for acessing employeedetails which implements UserDetails
+
 public class CustomEmployeeDetails implements UserDetails {
 
     private final Employee employee;

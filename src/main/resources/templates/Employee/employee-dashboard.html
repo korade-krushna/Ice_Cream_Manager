@@ -9,16 +9,18 @@
 </head >
 <body>
 <section class="d-flex align-item-center ">
-    <div class="row">
-        <div class="col-sm-4 col-md-3" th:each="it : ${icecreams}">
+    <div class="row w-100 p-3 h-100">
+        <div class="col-sm-4 col-md-3 " th:each="it : ${icecreams}">
             <div class="card shadow-6-strong bg-gradient-light" style="border-radius: 1rem;">
                 <img class="card-img-top" th:src="@{'/img/' + ${it.image}}" alt="Cardimagecap">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${it.name}">Card title</h5>
                     <h6 class="card-title" th:text="${it.variant} + '   ' + ${it.quantity}"></h6>
                     <p class="card-text" th:text="${it.description}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#"  class="btn btn-primary">Edit</a>
-                    <a href="#" th:href="@{'/employee/delet-icecream/' + ${it.Iid}}"class="btn btn-danger">Delet</a>
+                    <form th:action="@{'/employee/update-icecream/' + ${it.Iid}}" class="mt-2">
+                        <button type="submit"  class="btn btn-primary">Edit</button>
+                    </form>
+                    <a href="#" th:href="@{'/employee/delet-icecream/' + ${it.Iid}}"class="btn btn-danger mt-2">Delet</a>
                 </div>
             </div>
         </div>

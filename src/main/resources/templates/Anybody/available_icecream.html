@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" th:replace="base::Layout(~{::section})">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" th:replace="Anybody/base::Layout(~{::section})">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -10,7 +10,7 @@
 <body class="bg-dark">
 
 <section class="d-flex align-item-center ">
-    <div class="row">
+    <div class="row w-100 p-3 h-100">
         <div class="col-sm-4 col-md-3" th:each="it : ${icecreams}">
             <div class="card shadow-6-strong bg-gradient-light" style="border-radius: 1rem;">
                 <img class="card-img-top" th:src="@{'/img/' + ${it.image}}" alt="Cardimagecap">

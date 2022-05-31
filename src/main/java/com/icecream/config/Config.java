@@ -11,18 +11,19 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-@Configuration
+@Configuration // configure class
 @EnableWebSecurity
 public class Config extends WebSecurityConfigurerAdapter {
     @Bean
     public UserDetailsService getEmployeeDetailsService() {
         return new EmployeeDetailsServiceImpl();
     }
+    //Password encoder for encoding password
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    @Bean
+    @Bean // Data acess object authentication
     public DaoAuthenticationProvider daoAuthenticationProvider(){
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setUserDetailsService(this.getEmployeeDetailsService());
@@ -36,7 +37,7 @@ public class Config extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(daoAuthenticationProvider());
     }
 
-    @Override
+    @Override // giving permissiob to specific roles
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().
                 antMatchers("/employee/**").hasRole("EMPLOYEE")

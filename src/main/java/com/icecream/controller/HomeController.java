@@ -26,15 +26,15 @@ public class HomeController {
     private BCryptPasswordEncoder passwordEncoder;
     @RequestMapping("/")
     public String home(Model model) {
-        return "home";
+        return "/AnyBody/home";
     }
-    @RequestMapping("/become-employee")
+    @RequestMapping("/become-employee") //Controller For Registering the Employee
     public String addEmployee(Model model) {
         model.addAttribute("employee", new Employee());
-        return "become-employee";
+        return "/Anybody/become-employee";
     }
     //Controller For Registering the Employee
-    @RequestMapping(value = "/do_register", method = RequestMethod.POST)
+    @RequestMapping(value = "/do_register", method = RequestMethod.POST) // controller for doing server side logic for adding the employee
     public String do_register(@ModelAttribute("employee") Employee employee,
                               Model model, HttpSession session) throws Exception {
         try {
@@ -45,24 +45,24 @@ public class HomeController {
             model.addAttribute("employee", new Employee());
             session.setAttribute("message", new Message
                     ("Welcome aboard, it is a pleasure to have you join our team. Let us create magic.", "alert-success"));
-            return "become-employee";
+            return "redirect:/sign-in";
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("employee", employee);
             session.setAttribute("message", new Message("email-id already exist",
                     "alert-danger"));
-            return "become-employee";
+            return "/Anybody/become-employee";
         }
     }
-    @GetMapping("/sign-in")
+    @GetMapping("/sign-in")  // controller for showing the login page
     public String customLogin(Model model) {
-        return "login";
+        return "/Anybody/login";
     }
-    @RequestMapping("/availables")
+    @RequestMapping("/availables") // controller for showing availables
     public String dashboard(Model model){
         List<IceCream> icecreams = this.iceCreamRepositary.findAll();
         model.addAttribute("icecreams", icecreams);
-        return "available_icecream";
+        return "/Anybody/available_icecream";
     }
 
 }

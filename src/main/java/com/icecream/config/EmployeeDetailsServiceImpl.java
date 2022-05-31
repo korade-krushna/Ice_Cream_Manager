@@ -11,7 +11,7 @@ public class EmployeeDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    @Override
+    @Override // method for find username by username
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Employee employee = this.employeeRepository.getEmployeebyUsername(username);
         if (employee == null) {

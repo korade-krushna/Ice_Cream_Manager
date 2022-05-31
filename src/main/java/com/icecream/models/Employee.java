@@ -7,6 +7,7 @@ import java.util.List;
 @Table(name = "Employee")
 @Entity
 public class Employee {
+    // Employee Model class
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;

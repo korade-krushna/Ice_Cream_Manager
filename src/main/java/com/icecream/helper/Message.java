@@ -1,6 +1,7 @@
 package com.icecream.helper;
 
 public class Message {
+    // this class is for showing custom messages in case of errors
     private String name;
     private String type;
 

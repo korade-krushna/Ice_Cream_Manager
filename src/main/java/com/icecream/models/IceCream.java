@@ -7,6 +7,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "Icecream")
 public class IceCream {
+    // Ice Cream Model class
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int Iid;
