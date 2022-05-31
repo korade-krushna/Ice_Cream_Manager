@@ -59,10 +59,10 @@ public class EmployeeController {
                         + File.separator +
                         file.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
                 session.setAttribute("message", new Message("Ice Cream Added Succesfully", "alert-success"));
-                this.iceCreamRepositary.save(icecream);
             } else {
                 throw new Exception("Please Upload an Image");
             }
+            this.iceCreamRepositary.save(icecream);
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("icecream", icecream);
