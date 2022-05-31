@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IceCreamRepositary extends JpaRepository<IceCream, Integer> {
 
+
 }

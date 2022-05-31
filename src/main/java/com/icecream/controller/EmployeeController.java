@@ -19,6 +19,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -67,5 +68,12 @@ public class EmployeeController {
             session.setAttribute("message", new Message(e.getMessage(), "alert-danger"));
         }
         return "Employee/add_ice_cream";
+    }
+
+    @GetMapping("/delet-icecream/{id}")
+    public String deletIceCream(@PathVariable("id") Integer id, Model model){
+        IceCream iceCream = this.iceCreamRepositary.findById(id).get();
+        this.iceCreamRepositary.delete(iceCream);
+        return "redirect:/employee/dashboard";
     }
 }
