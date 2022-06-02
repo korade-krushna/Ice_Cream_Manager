@@ -53,11 +53,11 @@ public class EmployeeController {
         try {
             if(!file.isEmpty()){
                 icecream.setImage(file.getOriginalFilename());
-                File saved_file = new ClassPathResource("static/img").getFile();
-                Paths.get(saved_file.getAbsolutePath() + File.separator + file.getOriginalFilename());
-                Files.copy(file.getInputStream(), Paths.get(saved_file.getAbsolutePath()
-                        + File.separator +
-                        file.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
+//                File saved_file = new ClassPathResource("static/img").getFile();
+//                Paths.get(saved_file.getAbsolutePath() + File.separator + file.getOriginalFilename());
+//                Files.copy(file.getInputStream(), Paths.get(saved_file.getAbsolutePath()
+//                        + File.separator +
+//                        file.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
                 session.setAttribute("message", new Message("Ice Cream Added Succesfully", "alert-success"));
             } else {
                 throw new Exception("Please Upload an Image");
