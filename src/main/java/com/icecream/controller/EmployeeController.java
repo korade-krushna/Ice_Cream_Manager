@@ -88,7 +88,7 @@ public class EmployeeController {
                          @RequestParam("i-image")MultipartFile file,
                          HttpSession session) throws Exception {
         try {
-            IceCream exist = this.iceCreamRepositary.getIceCreambyName(iceCream.getName());
+            IceCream exist =  this.iceCreamRepositary.getIceCreambyName(iceCream.getName());
 
             if (exist != null) {
                 throw new Exception("Ice cream already exist");
