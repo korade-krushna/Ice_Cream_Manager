@@ -109,6 +109,6 @@ public class EmployeeController {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        return "redirect:/employee/dashboard";
+        return "Employee/employee-dashboard";
     }
 }
