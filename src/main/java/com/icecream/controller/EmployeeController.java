@@ -95,11 +95,11 @@ public class EmployeeController {
             }
             IceCream old = this.iceCreamRepositary.findById(iceCream.getIid()).get();
             if (!file.isEmpty()){
-                File saved_file = new ClassPathResource("static/img").getFile();
-                Paths.get(saved_file.getAbsolutePath() + File.separator + file.getOriginalFilename());
-                Files.copy(file.getInputStream(), Paths.get(saved_file.getAbsolutePath()
-                        + File.separator +
-                        file.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
+//                File saved_file = new ClassPathResource("static/img").getFile();
+//                Paths.get(saved_file.getAbsolutePath() + File.separator + file.getOriginalFilename());
+//                Files.copy(file.getInputStream(), Paths.get(saved_file.getAbsolutePath()
+//                        + File.separator +
+//                        file.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
                 iceCream.setImage(file.getOriginalFilename());
 
             } else {
