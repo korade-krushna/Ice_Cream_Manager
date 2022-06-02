@@ -31,7 +31,7 @@ public class HomeController {
     @RequestMapping("/become-employee") //Controller For Registering the Employee
     public String addEmployee(Model model) {
         model.addAttribute("employee", new Employee());
-        return "/Anybody/become-employee";
+        return "Anybody/become-employee";
     }
     //Controller For Registering the Employee
     @RequestMapping(value = "/do_register", method = RequestMethod.POST) // controller for doing server side logic for adding the employee
