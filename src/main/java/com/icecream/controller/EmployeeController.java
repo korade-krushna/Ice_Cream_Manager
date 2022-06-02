@@ -19,7 +19,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
 import java.util.List;
-
+import java.util.Optional;
 
 
 @Controller
@@ -86,8 +86,13 @@ public class EmployeeController {
     @PostMapping("/process_icecream") // controller for doing server side logic for updating ice cream
     public String update(@ModelAttribute IceCream iceCream,
                          @RequestParam("i-image")MultipartFile file,
-                         HttpSession session){
+                         HttpSession session) throws Exception {
         try {
+            IceCream exist = this.iceCreamRepositary.getIceCreambyName(iceCream.getName());
+
+            if (exist != null) {
+                throw new Exception("Ice cream already exist");
+            }
             IceCream old = this.iceCreamRepositary.findById(iceCream.getIid()).get();
             if (!file.isEmpty()){
                 File saved_file = new ClassPathResource("static/img").getFile();
@@ -101,8 +106,8 @@ public class EmployeeController {
                 iceCream.setImage(old.getImage());
             }
             this.iceCreamRepositary.save(iceCream);
-        } catch (IOException e) {
-            throw new RuntimeException("opps something went wrong");
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
         }
         return "redirect:/employee/dashboard";
     }
