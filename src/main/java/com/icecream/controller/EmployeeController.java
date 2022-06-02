@@ -81,7 +81,7 @@ public class EmployeeController {
     public String updateIceCream(@PathVariable("id") Integer id, Model model){
         IceCream icecream = this.iceCreamRepositary.findById(id).get();
         model.addAttribute("icecream", icecream);
-        return "/Employee/update-form";
+        return "Employee/update-form";
     }
     @PostMapping("/process_icecream") // controller for doing server side logic for updating ice cream
     public String update(@ModelAttribute IceCream iceCream,

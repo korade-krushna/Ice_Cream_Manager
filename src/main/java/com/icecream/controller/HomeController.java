@@ -51,7 +51,7 @@ public class HomeController {
             model.addAttribute("employee", employee);
             session.setAttribute("message", new Message("email-id already exist",
                     "alert-danger"));
-            return "/Anybody/become-employee";
+            return "Anybody/become-employee";
         }
     }
     @GetMapping("/sign-in")  // controller for showing the login page
@@ -62,7 +62,7 @@ public class HomeController {
     public String dashboard(Model model){
         List<IceCream> icecreams = this.iceCreamRepositary.findAll();
         model.addAttribute("icecreams", icecreams);
-        return "/Anybody/available_icecream";
+        return "Anybody/available_icecream";
     }
 
 }
