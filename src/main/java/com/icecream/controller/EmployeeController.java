@@ -105,7 +105,7 @@ public class EmployeeController {
             } else {
                 iceCream.setImage(old.getImage());
             }
-            this.iceCreamRepositary.save( iceCream);
+            this.iceCreamRepositary.save(iceCream);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
