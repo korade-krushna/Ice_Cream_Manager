@@ -56,7 +56,7 @@ public class HomeController {
     }
     @GetMapping("/sign-in")  // controller for showing the login page
     public String customLogin(Model model) {
-        return "/Anybody/login";
+        return "Anybody/login";
     }
     @RequestMapping("/availables") // controller for showing availables
     public String dashboard(Model model){
