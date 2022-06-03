@@ -6,6 +6,8 @@
   3. then run the project by right clicking in IceCreamShopApplication class and click on run.
   4. head over to localhost:8181/ for using the web in any browser.
   **5. It is deployed on the cloud so you dont need to configure any Database**
+  
+## OR VISIT https://ice-cream-manager.herokuapp.com/
  
  # I Have Created two kinds of api in this project
     1.availabel for everyone:
